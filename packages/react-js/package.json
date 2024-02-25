@@ -1,0 +1,7 @@
+{
+  "name": "@palico-ai/react-alpha",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  }
+}

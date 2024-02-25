@@ -1,0 +1,44 @@
+{
+  "name": "react-js",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/react-js/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "packages/react-js/src/index.ts",
+        "outputPath": "dist/packages/react-js",
+        "tsConfig": "packages/react-js/tsconfig.lib.json",
+        "compiler": "babel",
+        "project": "packages/react-js/package.json",
+        "format": ["esm", "cjs"],
+        "assets": [
+          {
+            "glob": "packages/react-js/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "release": {
+      "executor": "nx-release:build-update-publish",
+      "options": {
+        "libName": "react-js"
+      }
+    }
+  }
+}
